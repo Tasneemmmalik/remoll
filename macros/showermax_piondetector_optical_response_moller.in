@@ -7,7 +7,7 @@
 
 # This must be explicitly called
 /run/initialize
-
+/control/execute macros/load_magnetic_fieldmaps.mac
 # Magnetic fields
 /remoll/addfield map_directory/blockyHybrid_rm_3.0.txt
 /remoll/addfield map_directory/blockyUpstream_rm_1.1.txt
@@ -40,7 +40,7 @@
 /remoll/seed %seedA% %seedB%
 
 # Filename
-/remoll/filename rootfiles/%name%/%name%_%jobid%_workdir/%name%_%jobid%.root
+/remoll/filename rootfiles/showermax/showermax_moller_workdir/showemax_moller.root
 
 # Number of events
-/run/beamOn %nevents%
+/run/beamOn 3000

@@ -1,0 +1,42 @@
+# Enable optical physics
+/remoll/physlist/parallel/enable
+/remoll/physlist/optical/enable
+/process/optical/boundary/setInvokeSD true
+
+# This must be explicitly called
+/run/initialize
+
+# Load magnetic fields
+/remoll/addfield map_directory/V2U.1a.50cm.parallel.txt
+/remoll/addfield map_directory/subcoil_2_3_3mm_full.txt
+
+# Disable all detectors
+/remoll/SD/disable_all
+
+# Enable showermax detectors
+/remoll/SD/enable_range 7000 7278
+#/remoll/SD/enable_range 80000 89999
+/remoll/SD/enable 28
+/remoll/SD/enable 30
+
+#/remoll/SD/detect boundaryhits 70016
+
+/remoll/SD/enable 8000 #pion det
+#/remoll/SD/detect lowenergyneutral 8000
+/remoll/SD/detect secondaries 8000
+/remoll/SD/detect boundaryhits 8000
+
+/remoll/SD/enable 8001 #pion det lucite
+#/remoll/SD/detect lowenergyneutral 8001
+/remoll/SD/detect secondaries 8001
+/remoll/SD/detect boundaryhits 8001
+
+# Set pion generator
+/remoll/beamene 11 GeV
+/remoll/evgen/set pion
+
+# Only focus on primary tracks and optical photons
+# Not sure if this is helpful or not - test with and without
+/remoll/tracking/set 3
+
+/run/beamOn 1000

@@ -1,0 +1,83 @@
+# This must be called before initialize
+/remoll/geometry/setfile geometry/mollerMother.gdml
+/remoll/parallel/setfile
+
+# Enable optical physics
+/remoll/physlist/parallel/disable
+/remoll/physlist/optical/enable
+/process/optical/boundary/setInvokeSD true
+
+# This must be explicitly called
+/run/initialize
+
+# Disable all detectors
+/remoll/SD/disable_all
+
+# Enable sieve virtual detector
+/remoll/SD/enable 270
+/remoll/SD/detect lowenergyneutral 270
+/remoll/SD/detect secondaries 270
+
+# Enable blocker
+#/remoll/SD/enable 1007
+#/remoll/SD/detect lowenergyneutral 1007
+#/remoll/SD/detect secondaries 1007
+#/remoll/SD/detect bondaryhits 1007
+
+# Enable main detector
+/remoll/SD/enable 28
+/remoll/SD/detect secondaries 28
+
+# Enable showermax detectors
+/remoll/SD/enable_range 70000 79999
+/remoll/SD/enable_range 80000 89999
+
+#/remoll/SD/detect boundaryhits 70016
+
+/remoll/SD/enable 8000 #pion det
+#/remoll/SD/detect lowenergyneutral 8000
+/remoll/SD/detect secondaries 8000
+/remoll/SD/detect boundaryhits 8000
+
+/remoll/SD/enable 8001 #pion det lucite
+#/remoll/SD/detect lowenergyneutral 8001
+/remoll/SD/detect secondaries 8001
+/remoll/SD/detect boundaryhits 8001
+
+/remoll/SD/enable 32 #GEM1
+#/remoll/SD/detect lowenergyneutral 32
+/remoll/SD/detect secondaries 32
+/remoll/SD/detect boundaryhits 32
+
+/remoll/SD/enable 33 #GEM2
+#/remoll/SD/detect lowenergyneutral 33
+#/remoll/SD/detect secondaries 33
+/remoll/SD/detect boundaryhits 33
+
+/remoll/SD/enable 34 #GEM3
+#/remoll/SD/detect lowenergyneutral 34
+#/remoll/SD/detect secondaries 34
+/remoll/SD/detect boundaryhits 34
+
+/remoll/SD/enable 35 #GEM4
+#/remoll/SD/detect lowenergyneutral 35
+#/remoll/SD/detect secondaries 35
+/remoll/SD/detect boundaryhits 35
+
+# Set beam generator
+/remoll/beamene 11 GeV
+/remoll/evgen/set beam
+/remoll/evgen/beam/origin 0 0 0 cm
+/remoll/evgen/beam/originspread 30 25 0 cm
+/remoll/evgen/beam/direction 0 0 1
+/remoll/evgen/beam/rasx 0
+/remoll/evgen/beam/rasy 0
+#/remoll/evgen/beam/rasrefz 0
+/remoll/evgen/beam/corrx 0
+/remoll/evgen/beam/corry 0
+/remoll/evgen/beam/partName pi-
+
+# Only focus on primary tracks and optical photons
+ /remoll/tracking/set 3
+
+/run/beamOn 100000
